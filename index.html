@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Entrepreneur Sanctuary — The Faceless Page Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #F5C518;
+    --gold2: #d4a914;
+    --black: #080808;
+    --dark: #0f0f0f;
+    --card: #141414;
+    --border: #1e1e1e;
+    --white: #f2f2f2;
+    --gray: #888;
+    --gray2: #bbb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* ── PAGE LAYOUT ── */
+  .page {
+    width: 816px;
+    min-height: 1056px;
+    margin: 0 auto 2px;
+    background: var(--black);
+    position: relative;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* Prevent elements from splitting across pages */
+  .method-card, .callout, .insight, .honest-box,
+  .tool-card, .toc-item, .quote-block, .tools-grid,
+  .section-header, .cover-stats, .step {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Each content-page is self-contained */
+  .content-page {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* Section titles never orphaned */
+  .section-title, .card-title, .method-title {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* ══════════════════════════════
+     COVER PAGE
+  ══════════════════════════════ */
+  .cover {
+    background: #080808;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 80px 72px 64px;
+    min-height: 1056px;
+    position: relative;
+  }
+  .cover-glow {
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(245,197,24,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover-glow2 {
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 400px; height: 400px;
+    background: radial-gradient(ellipse, rgba(245,197,24,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .cover-badge {
+    background: var(--gold);
+    color: var(--black);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 2px;
+  }
+  .cover-edition {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-align: right;
+    line-height: 1.8;
+  }
+  .cover-mid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 0 40px;
+  }
+  .cover-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+  .cover-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 108px;
+    line-height: 0.88;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+  .cover-title .gold { color: var(--gold); }
+  .cover-subtitle {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gray2);
+    max-width: 480px;
+    line-height: 1.8;
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+  }
+  .cover-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .cover-stat {
+    background: var(--dark);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .cover-stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .cover-stat-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+  }
+  .cover-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+  .cover-taglines {
+    text-align: right;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    line-height: 2.2;
+  }
+
+  /* ══════════════════════════════
+     TABLE OF CONTENTS
+  ══════════════════════════════ */
+  .toc-page {
+    padding: 80px 72px;
+    min-height: 1056px;
+  }
+  .toc-header {
+    margin-bottom: 56px;
+  }
+  .page-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .toc-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    letter-spacing: 2px;
+    line-height: 0.9;
+    color: var(--white);
+  }
+  .toc-title .gold { color: var(--gold); }
+  .toc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .toc-item:last-child { border-bottom: none; }
+  .toc-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 48px;
+    opacity: 0.6;
+  }
+  .toc-content {}
+  .toc-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .toc-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.6;
+    max-width: 500px;
+  }
+
+  /* ══════════════════════════════
+     CONTENT PAGES
+  ══════════════════════════════ */
+  .content-page {
+    padding: 72px 72px 100px;
+    position: relative;
+  }
+  .content-page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: var(--gold);
+    opacity: 0.08;
+    line-height: 0.8;
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    letter-spacing: 0;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 2px;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .section-title .gold { color: var(--gold); }
+  .section-intro {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--gray2);
+    line-height: 1.85;
+    max-width: 580px;
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+  }
+
+  /* BODY TEXT */
+  .body-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+  .body-text strong { color: var(--white); font-weight: 600; }
+  .body-text em { color: var(--gold); font-style: normal; font-weight: 500; }
+
+  /* CALLOUT BOX */
+  .callout {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    padding: 18px 22px;
+    margin: 20px 0;
+  }
+  .callout-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .callout-text {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--gray2);
+    font-weight: 300;
+  }
+  .callout-text strong { color: var(--white); }
+
+  /* INSIGHT BOX */
+  .insight {
+    background: rgba(245,197,24,0.05);
+    border: 1px solid rgba(245,197,24,0.25);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .insight-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .insight-text {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  /* METHOD CARD */
+  .method-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 24px;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .method-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .method-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .method-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .method-body {
+    font-size: 14px;
+    line-height: 1.85;
+    color: #bbb;
+    font-weight: 300;
+  }
+  .method-body strong { color: var(--white); font-weight: 600; }
+  .method-tag {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 4px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .method-tag.high { border-color: rgba(245,197,24,0.4); color: var(--gold); }
+  .method-tag.med { border-color: rgba(200,200,200,0.3); color: #aaa; }
+
+  /* STEP LIST */
+  .step-list {
+    margin: 24px 0;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .step-num {
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: #bbb;
+    font-weight: 300;
+    padding-top: 4px;
+  }
+  .step-content strong { color: var(--white); font-weight: 600; }
+
+  /* RULE CARD */
+  .rule-card {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .rule-card:last-child { border-bottom: none; }
+  .rule-icon {
+    font-size: 22px;
+    min-width: 36px;
+    text-align: center;
+    padding-top: 2px;
+  }
+  .rule-text {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: #bbb;
+    font-weight: 300;
+  }
+  .rule-text strong { color: var(--white); font-weight: 600; }
+
+  /* QUOTE BLOCK */
+  .quote-block {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 40px 0;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: var(--gold);
+    line-height: 1.5;
+    max-width: 520px;
+    margin: 0 auto 16px;
+  }
+  .quote-attr {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* ROUTINE TABLE */
+  .routine-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+  }
+  .routine-table th {
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 12px 16px;
+    text-align: left;
+  }
+  .routine-table td {
+    padding: 14px 16px;
+    font-size: 13.5px;
+    color: #bbb;
+    font-weight: 300;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.7;
+  }
+  .routine-table tr:nth-child(even) td { background: var(--card); }
+  .routine-table td strong { color: var(--white); font-weight: 600; }
+  .routine-table td em { color: var(--gold); font-style: normal; }
+
+  /* TOOLS GRID */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .tool-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 20px;
+  }
+  .tool-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .tool-desc {
+    font-size: 13px;
+    color: #999;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* PAGE FOOTER */
+  .page-footer {
+    position: absolute;
+    bottom: 32px;
+    left: 72px;
+    right: 72px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+  .footer-section {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* HONEST MOMENT */
+  .honest-box {
+    background: #0d0d0d;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 18px 24px;
+    margin: 20px 0;
+  }
+  .honest-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 12px;
+  }
+  .honest-text {
+    font-size: 14.5px;
+    line-height: 1.9;
+    color: #aaa;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  @media print {
+    body { background: #080808; }
+    .page { margin: 0; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  }
+
+  /* ── BACK TO TOP BUTTON ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: #1a73e8;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(26,115,232,0.4);
+    transition: all 0.2s;
+    display: none;
+  }
+  .back-to-top:hover { background: #1557b0; transform: translateY(-2px); }
+  .back-to-top.visible { display: block; }
+
+  /* ── PERSISTENT FOOTER ── */
+  .site-footer {
+    background: #0a0a0a;
+    border-top: 1px solid #1e1e1e;
+    padding: 28px 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: #F5C518;
+    text-decoration: none;
+  }
+  .footer-platforms {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .footer-platform-link {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid #2a2a2a;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .footer-platform-link:hover { border-color: #F5C518; color: #F5C518; }
+  .footer-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #F5C518;
+    color: #080808;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .footer-cta:hover { background: #d4a914; }
+
+  /* ── TOC LINKS ── */
+  .toc-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .toc-link:hover .toc-section-title { color: #F5C518; }
+  .toc-item { cursor: pointer; }
+
+  /* ── CROSS REFERENCE ── */
+  .xref {
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(26,115,232,0.3);
+    transition: all 0.15s;
+  }
+  .xref:hover { color: #4a9eff; border-bottom-color: #4a9eff; }
+
+  @media print {
+    .back-to-top { display: none !important; }
+    .site-footer { page-break-inside: avoid; }
+  }
+
+
+  /* ── SLIM STICKY FOOTER ── */
+  .sticky-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 44px;
+    background: rgba(8,8,8,0.96);
+    border-top: 1px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    z-index: 9998;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  .sticky-footer.visible {
+    transform: translateY(0);
+  }
+  .sticky-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .sticky-link.instagram {
+    color: #aaa;
+    border: 1px solid #2a2a2a;
+  }
+  .sticky-link.instagram:hover {
+    color: #F5C518;
+    border-color: #F5C518;
+  }
+  .sticky-link.coaching {
+    background: #1a73e8;
+    color: #fff;
+    border: 1px solid #1a73e8;
+  }
+  .sticky-link.coaching:hover {
+    background: #1557b0;
+  }
+  .sticky-link.top {
+    color: #555;
+    border: 1px solid #1e1e1e;
+  }
+  .sticky-link.top:hover {
+    color: #fff;
+    border-color: #444;
+  }
+  .sticky-divider {
+    width: 1px;
+    height: 18px;
+    background: #2a2a2a;
+  }
+  @media print {
+    .sticky-footer { display: none !important; }
+  }
+
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .page {
+      width: 100% !important;
+      min-height: unset !important;
+      margin: 0 0 2px 0 !important;
+    }
+    .cover {
+      padding: 48px 24px 40px !important;
+      min-height: unset !important;
+    }
+    .cover-title {
+      font-size: 72px !important;
+      line-height: 0.88 !important;
+    }
+    .cover-stats {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .cover-stat-num { font-size: 28px !important; }
+    .cover-bottom {
+      flex-direction: column !important;
+      gap: 12px !important;
+      align-items: flex-start !important;
+    }
+    .toc-page {
+      padding: 48px 24px !important;
+      min-height: unset !important;
+    }
+    .toc-title { font-size: 48px !important; }
+    .content-page {
+      padding: 48px 24px 64px !important;
+    }
+    .section-title {
+      font-size: 38px !important;
+    }
+    .section-num {
+      font-size: 80px !important;
+      top: 20px !important;
+      right: 16px !important;
+    }
+    .tools-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .screenshot-guide {
+      grid-template-columns: 1fr !important;
+    }
+    .stats-row {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    .routine-table {
+      font-size: 12px !important;
+    }
+    .routine-table th {
+      font-size: 11px !important;
+      padding: 10px 10px !important;
+    }
+    .routine-table td {
+      padding: 10px 10px !important;
+    }
+    .card { padding: 24px 20px !important; }
+    .method-card { padding: 20px 18px !important; }
+    .callout { padding: 16px 18px !important; }
+    .insight { padding: 18px 18px !important; }
+    .honest-box { padding: 16px 18px !important; }
+    .body-text { font-size: 14px !important; }
+    .step-content { font-size: 13px !important; }
+    .quote-text { font-size: 18px !important; }
+    .page-footer {
+      left: 24px !important;
+      right: 24px !important;
+    }
+    .site-footer {
+      padding: 24px 20px !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 16px !important;
+    }
+    .footer-platforms {
+      gap: 6px !important;
+    }
+    .footer-platform-link {
+      font-size: 9px !important;
+      padding: 5px 10px !important;
+    }
+    .cover-eyebrow { font-size: 18px !important; }
+    .section-intro { font-size: 14px !important; }
+    .toc-item { padding: 18px 0 !important; }
+    .toc-num { font-size: 32px !important; }
+  }
+
+  @media (max-width: 480px) {
+    .cover-title { font-size: 56px !important; }
+    .section-title { font-size: 32px !important; }
+    .toc-title { font-size: 40px !important; }
+    .cover-stats { grid-template-columns: repeat(2, 1fr) !important; }
+    .routine-table thead { display: none !important; }
+    .routine-table td {
+      display: block !important;
+      width: 100% !important;
+    }
+    .routine-table tr {
+      display: block !important;
+      margin-bottom: 16px !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 8px !important;
+      overflow: hidden !important;
+    }
+    .sticky-footer { gap: 4px !important; padding: 0 8px !important; }
+    .sticky-link { padding: 5px 10px !important; font-size: 9px !important; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- COVER PAGE -->
+<div id="top"></div>
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="cover">
+  <div class="cover-glow"></div>
+  <div class="cover-glow2"></div>
+
+  <div class="cover-top">
+    <div class="cover-badge">Entrepreneur Sanctuary</div>
+    <div class="cover-edition">Volume 2<br>Updated Edition<br>2026</div>
+  </div>
+
+  <div class="cover-mid">
+    <div class="cover-eyebrow">The Faceless Page Playbook</div>
+    <div class="cover-title">0 TO<br><span class="gold">28K</span><br>FOLLOWERS</div>
+    <div class="cover-subtitle">
+      The exact system I built to grow a faceless entrepreneur page to 28,000 followers and 26 million views in 90 days — while working a full-time job.
+    </div>
+  </div>
+
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <div class="cover-stat-num">28K</div>
+      <div class="cover-stat-label">Followers</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">26M</div>
+      <div class="cover-stat-label">Views · 90 Days</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">15M+</div>
+      <div class="cover-stat-label">Accounts Reached</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">1.5M</div>
+      <div class="cover-stat-label">Interactions</div>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="cover-taglines">
+      Build Your Passive Income<br>
+      Grow Your Brand
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div id="toc"></div>
+<!-- TABLE OF CONTENTS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="toc-page">
+  <div class="toc-header">
+    <span class="page-label">Inside This Guide</span>
+    <div class="toc-title">Table of<br><span class="gold">Contents</span></div>
+  </div>
+
+  <div class="toc-item">
+    <div class="toc-num">01</div>
+    <div class="toc-content">
+      <a href="#section-01" class="xref" style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; color:var(--white); margin-bottom:4px; display:block; border:none; font-weight:normal;">The Real Talk Introduction</a>
+      <div class="toc-desc">Who this guide is for, what makes it different, and the honest truth about what building this page has actually cost me in time, sleep, and gym sessions.</div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">02</div>
+    <div class="toc-content">
+      <a href="#section-02" class="xref" style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; color:var(--white); margin-bottom:4px; display:block; border:none; font-weight:normal;">The Mindset Shift: Consumer to Hunter</a>
+      <div class="toc-desc">The single most important change you need to make before anything else works. You are no longer scrolling. You are hunting.</div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">03</div>
+    <div class="toc-content">
+      <a href="#section-03" class="xref" style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; color:var(--white); margin-bottom:4px; display:block; border:none; font-weight:normal;">The Three Content Sourcing Methods</a>
+      <div class="toc-desc">The Dead Viral Search, Cross-Platform Arbitrage, and the First-Clip Method. Each one with honest pros, cons, and time costs.</div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">04</div>
+    <div class="toc-content">
+      <a href="#section-04" class="xref" style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; color:var(--white); margin-bottom:4px; display:block; border:none; font-weight:normal;">The Source-Finding Toolkit</a>
+      <div class="toc-desc">The YouTube transcript trick. The Google Lens method. The clothing and background identification hack. Every tool I actually use to track down original source footage.</div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">05</div>
+    <div class="toc-content">
+      <div class="toc-section-title">Quality, Downloads & Hook Engineering</div>
+      <div class="toc-desc">Why quality matters more than you think, how to download footage the right way, and the two-second rule that changes everything about how you structure a reel.</div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">06</div>
+    <div class="toc-content">
+      <a href="#section-06" class="xref" style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; color:var(--white); margin-bottom:4px; display:block; border:none; font-weight:normal;">The Full-Time Job Posting Routine</a>
+      <div class="toc-desc">My actual daily and weekly schedule. The content tracker spreadsheet. The batch scheduling system. And the honest trade-offs I make every single week.</div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <div class="toc-num">07</div>
+    <div class="toc-content">
+      <a href="#section-07" class="xref" style="font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:1px; color:var(--white); margin-bottom:4px; display:block; border:none; font-weight:normal;">What Happens When It Works</a>
+      <div class="toc-desc">First steps toward monetization, coaching, and building something that generates income beyond your 9-to-5.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-01"></div>
+<!-- SECTION 01: REAL TALK INTRODUCTION -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="content-page">
+  <div class="section-num">01</div>
+  <div class="section-header">
+    <span class="page-label">Section One</span>
+    <div class="section-title">The Real<br><span class="gold">Talk</span></div>
+    <div class="section-intro">Before we get into strategy and systems, I want to be upfront about what this actually is and what it isn't.</div>
+  </div>
+
+  <div class="body-text">
+    This guide exists because people kept asking. Strangers in my DMs, people in the comments, creators who'd seen the numbers and wanted to know how it happened. In 90 days, I grew a faceless Instagram page called Entrepreneur Sanctuary from zero to over 28,000 followers. The page accumulated 26 million views, reached more than 15 million accounts, and generated 1.5 million interactions — all without ever showing my face, without a big production budget, and without a single piece of paid promotion.
+  </div>
+
+  <div class="body-text">
+    What I'm going to share in this guide is the actual system I built. Not a cleaned-up, theoretical version of it. The real one — with its inefficiencies, its trade-offs, and its honest limitations included.
+  </div>
+
+  <div class="honest-box">
+    <div class="honest-label">Honest Moment</div>
+    <div class="honest-text">Building this page while working a full-time job has cost me. My gym time has taken a hit. My social life has become more scheduled and deliberate. There are evenings where I'm choosing between cooking a real meal, calling a friend, taking my dog for a walk, or editing a reel — and sometimes the reel wins. I'm not telling you this to complain. I'm telling you this because most guides leave this part out, and you deserve to know what you're actually signing up for before you start.</div>
+  </div>
+
+  <div class="body-text">
+    That said — the upside is real too. There is something genuinely exciting about waking up in the morning and seeing that a post you scheduled the night before has already reached 50,000 people while you were sleeping. There is a momentum that builds with this kind of page that is unlike anything I've experienced before. <strong>If you're willing to treat this like a business and not a hobby, it will start behaving like one.</strong>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Who This Guide Is For</div>
+    <div class="callout-text">This guide is written for people who are working a job and want to build something on the side. People who don't want to show their face on camera. People who are willing to put in consistent, focused effort over a period of weeks and months. It is not a get-rich-quick guide. It is a get-consistent-results-if-you-actually-do-the-work guide.</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 01 — Introduction</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-02"></div>
+<!-- SECTION 02: MINDSET SHIFT -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="content-page">
+  <div class="section-num">02</div>
+  <div class="section-header">
+    <span class="page-label">Section Two</span>
+    <div class="section-title">Consumer<br>to <span class="gold">Hunter</span></div>
+    <div class="section-intro">The most important change you will make is not a strategy. It's a perspective shift that happens before any strategy can work.</div>
+  </div>
+
+  <div class="body-text">
+    When most people open Instagram, they are consumers. They scroll. They watch. They react. They close the app twenty minutes later having absorbed a lot of content and produced nothing. This is the default mode, and it's the mode you need to permanently exit if you're serious about building a page.
+  </div>
+
+  <div class="body-text">
+    The shift is simple to describe and surprisingly difficult to maintain in practice: <strong>every single time you open Instagram, you are there for business purposes only.</strong> You are a hunter on the prowl for the next piece of content that has viral potential. You are not a spectator. You are not there to be entertained. You are there to work.
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"Any time you spend on Instagram should be purely to find content for your own page. No more scrolling for the sake of scrolling."</div>
+    <div class="quote-attr">The Mindset Shift — Entrepreneur Sanctuary</div>
+  </div>
+
+  <div class="body-text">
+    In practical terms, this means that when you open the app and find yourself passively watching something you find entertaining but have no intention of using — you close it. When you find something that has potential, you save it immediately into one of your organized collections. You don't linger. You don't drift. You move with purpose.
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">Set Up Your Save Collections Now</div>
+    <div class="callout-text">Before you start hunting, organize your Instagram saved collections. Create separate folders for different content types — general business content, motivational clips, Shark Tank content, podcast clips, and seasonal or niche-specific content like sports or holiday posts. When you find something worth saving, you want to be able to drop it into the right folder in under two seconds and keep moving.</div>
+  </div>
+
+  <div class="body-text">
+    This mindset shift also applies to how you experience other media throughout your day. Podcasts you listen to on your commute or during your workday are no longer just entertainment — they are potential source material. A book you're reading, a documentary you're watching, an interview you catch on YouTube. <strong>Everything becomes research when you've made the switch from consumer to creator.</strong>
+  </div>
+
+  <div class="honest-box">
+    <div class="honest-label">The Trade-off Nobody Mentions</div>
+    <div class="honest-text">Being in creator mode all the time is mentally taxing in a way that passive consumption never is. There will be moments where you just want to watch something without thinking about whether it could be a post. That's a real psychological cost. Give yourself intentional off-time where you are allowed to just be a person. But when you're in work mode — be fully in work mode.</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 02 — Mindset</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-03"></div>
+<!-- SECTION 03: THREE SOURCING METHODS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="content-page">
+  <div class="section-num">03</div>
+  <div class="section-header">
+    <span class="page-label">Section Three</span>
+    <div class="section-title">The Three<br><span class="gold">Sourcing</span><br>Methods</div>
+    <div class="section-intro">I use three distinct methods to find content. Each one has a different risk profile, time cost, and upside. Understanding all three — and knowing when to use each one — is the core of the whole system.</div>
+  </div>
+
+  <div class="method-card">
+    <div class="method-num">Method 01</div>
+    <div class="method-title">The Dead Viral Search</div>
+    <div class="method-body">
+      This is my most consistent and reliable method. Go to Instagram's search tab — not your home feed — and type in keywords relevant to your niche. Words like <strong>business, entrepreneur, startup, wealth</strong>, or the names of specific people like Steve Jobs, Alex Hormozi, or Jeff Bezos. The search tab doesn't show you what's trending right now. It surfaces the most popular posts of all time for that keyword. That distinction is everything.<br><br>
+      When you find a post that interests you, click into it and check when it was originally posted. <strong>If it was posted more than five or six months ago, that's your first green flag.</strong> Now search for other accounts that have posted that same clip or the same core content recently. If you find that nobody has gone significantly viral with that content in the last four to six weeks, you are looking at a post with a very high likelihood of performing well if you post it now.<br><br>
+      The logic here is simple: viral content has a cooldown window. Your audience hasn't seen it recently. The content is proven to perform. The timing is right. That combination is as close to a guarantee as this game offers.
+    </div>
+    <span class="method-tag high">HIGH RELIABILITY</span>
+    <span class="method-tag med" style="margin-left:8px;">MEDIUM TIME COST</span>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 03 — Sourcing Methods</div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+<div class="content-page">
+  <div class="section-num">03</div>
+
+  <div class="method-card">
+    <div class="method-num">Method 02</div>
+    <div class="method-title">Cross-Platform Arbitrage</div>
+    <div class="method-body">
+      Every major social platform has its own audience and its own content ecosystem. What goes viral on TikTok doesn't automatically surface on Instagram. What blows up on Twitter doesn't always make it to YouTube Shorts. <strong>This gap is an opportunity.</strong><br><br>
+      Spend time on platforms outside of Instagram — TikTok, YouTube Shorts, Twitter/X, LinkedIn — and look for content in your niche that is performing exceptionally well but hasn't made its way to Instagram in a meaningful way yet. When you find it, you become the person who introduces it to an Instagram audience. They haven't seen it. The content is proven. You're simply the bridge.<br><br>
+      This works in reverse too. When one of your Instagram posts goes viral, immediately post it to your other platforms — TikTok, YouTube Shorts, LinkedIn, Threads, Twitter. If the original content hasn't surfaced much on those platforms, it tends to perform well there too. You're essentially running a media distribution network, and every piece of content should travel as far as it possibly can.
+    </div>
+    <span class="method-tag high">MEDIUM RELIABILITY</span>
+    <span class="method-tag med" style="margin-left:8px;">LOW-MEDIUM TIME COST</span>
+  </div>
+
+  <div class="method-card">
+    <div class="method-num">Method 03</div>
+    <div class="method-title">The First-Clip Method</div>
+    <div class="method-body">
+      This is the highest risk, highest reward method in the system — and it's also where I spend the most time. The concept is straightforward: follow long-form creators and podcasters in your niche on YouTube. Watch or listen to their content. When you hear something genuinely compelling — a story, an insight, a moment that makes you think <em>that's shareable</em> — note the timestamp immediately and keep going.<br><br>
+      What makes this method powerful is that you are creating content that has never existed on short-form social media before. Nobody has clipped that moment. Nobody has packaged it into a reel. You're first. And when you're first with content that genuinely delivers value, the algorithm rewards you for it.<br><br>
+      <strong>The honest downside:</strong> You can spend hours sourcing a clip, cutting it, refining the hook, adding captions — and it gets 200 views. That's genuinely demoralizing when it happens. But when one of these posts takes off, it becomes some of your best-performing content. The upside is real. You just have to be willing to absorb the losses on the way there.
+    </div>
+    <span class="method-tag high" style="border-color:rgba(245,197,24,0.6);">HIGHEST REWARD</span>
+    <span class="method-tag med" style="margin-left:8px;">HIGH TIME COST</span>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 03 — Sourcing Methods</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-04"></div>
+<!-- SECTION 04: SOURCE-FINDING TOOLKIT -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="content-page">
+  <div class="section-num">04</div>
+  <div class="section-header">
+    <span class="page-label">Section Four</span>
+    <div class="section-title">The Source-<br><span class="gold">Finding</span><br>Toolkit</div>
+    <div class="section-intro">Finding a clip you want to use is only half the battle. Tracking down the original high-quality source footage is where most people give up. Here's exactly how I do it.</div>
+  </div>
+
+  <div class="body-text">
+    When you find a clip on Instagram that you want to use, your first instinct might be to just download it from Instagram directly using one of the many web-based tools available. <strong>Don't do this.</strong> We'll talk more about why in the next section, but the short answer is: compressed downloaded video is immediately identifiable as lower quality, and quality matters more than most new creators realize.
+  </div>
+
+  <div class="body-text">
+    Your goal is always to find the original source of the footage and download it from there at the highest possible quality. Here is the toolkit I use to do that.
+  </div>
+
+  <div class="step-list">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content"><strong>Check the original post description first.</strong> Sometimes the creator who posted the clip on Instagram has linked back to the original podcast or video in their caption. It's not always there, and sometimes the description is unhelpfully vague — but it takes five seconds to check and occasionally saves you significant time.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content"><strong>Use the Google Lens / AI circle search method.</strong> Take a screenshot of the clip. Open your AI image search tool and circle the portion of the image that might identify the source — the background, a logo, a microphone setup, a distinctive piece of furniture. This is a surprisingly underrated method that has saved me multiple times when I had almost no other information to go on.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content"><strong>Narrow by podcast and guest speaker.</strong> If you can identify the podcast and the guest, you've already narrowed your search dramatically. Most podcasts have searchable episode lists. If the guest has appeared on that podcast multiple times — which happens often with popular guests — move to the next step.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content"><strong>Use clothing and background details to identify the specific episode.</strong> Podcast set designs change. Guest outfits change. Look closely at what the speakers are wearing and what the background looks like in the clip you're trying to source. Cross-reference that against the thumbnail images for the episodes where that guest appeared. It sounds tedious but it works reliably and often takes less than two minutes once you know to do it.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content"><strong>Use the YouTube transcript search method.</strong> Once you've found the right video on YouTube, open it and scroll down to the description. Click to expand it. At the bottom you'll see a "Show Transcript" option — click it. The full transcript of the video will appear in a panel on the right side of the screen. Now use <em>Ctrl+F (or Cmd+F on Mac)</em> to search the entire page for keywords from the clip. <strong>Note: use your browser's native find function, not YouTube's internal search — YouTube's internal search is unreliable for this purpose.</strong> This lets you jump directly to the exact moment in a two-hour video without watching a single second of footage you don't need.</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">The Timestamp System</div>
+    <div class="insight-text">When you're listening to a podcast at work — yes, with headphones in while you're still doing your job — the moment something catches your attention, write down the timestamp and one or two keywords in your notebook immediately. You don't need to stop what you're doing. Two seconds. Timestamp, keywords, keep working. Later, you use those notes combined with the transcript search method to find the exact clip in minutes rather than rewatching the whole thing.</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 04 — Source Finding Toolkit</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-05"></div>
+<!-- SECTION 05: QUALITY, DOWNLOADS & HOOK ENGINEERING -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="content-page">
+  <div class="section-num">05</div>
+  <div class="section-header">
+    <span class="page-label">Section Five</span>
+    <div class="section-title">Quality,<br>Downloads &<br><span class="gold">Hook Engineering</span></div>
+    <div class="section-intro">How you get the footage and how you structure the first two seconds of your reel are the two technical decisions that separate posts that perform from posts that don't.</div>
+  </div>
+
+  <div class="body-text">
+    <strong>Quality is not optional.</strong> When you download a video from Instagram using a web-based tool like SnapInsta or similar services, you are downloading a compressed version of a file that may itself have already been compressed when it was uploaded. You end up with a degraded copy of a degraded copy. The visual difference is visible, and your audience notices even if they don't consciously register why one video looks slightly worse than another.
+  </div>
+
+  <div class="body-text">
+    The solution is to download a desktop video downloader application — not a website, not a browser extension, but a proper installed application like 4K Video Downloader or the Mac-native equivalent. These applications pull the video file directly from the source at the original recorded quality. You paste the YouTube link into the app, select your quality setting, and it downloads the actual file as it was uploaded by the creator — uncompressed, full resolution.
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">A Note on Storage</div>
+    <div class="callout-text">Full-quality video files from long-form podcasts and interviews are large. A two-hour podcast episode in high resolution can easily be several gigabytes. Once you have extracted the clip or clips you need and finished your edits, delete the source file from your computer to recover the space. The exception: if you know there are other clips in that same video you plan to use in the future, archive it in a designated folder rather than deleting it. Time spent re-downloading is time wasted.</div>
+  </div>
+
+  <div class="section-title" style="font-size: 36px; margin-top: 36px; margin-bottom: 20px;">Hook Engineering: The <span class="gold">Two-Second Rule</span></div>
+
+  <div class="body-text">
+    Everything about how a reel performs on Instagram comes down to what happens in the first two seconds. That is the window in which someone decides whether to keep watching or scroll past. If you do not capture attention in that window, nothing else you do with the rest of the video matters. Nobody will see it.
+  </div>
+
+  <div class="body-text">
+    When I cut a clip from a podcast, the most naturally compelling part of the conversation is rarely at the very beginning of what was said. Speakers warm up. They provide context before they deliver the insight. They build to the most interesting moment rather than leading with it. <strong>Your job is to find that most interesting moment and put it at the front — even if it appears much later in the original conversation.</strong>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">The Reorder Technique</div>
+    <div class="insight-text">Take your raw clip and identify the single most attention-grabbing one to five seconds anywhere within it. It might be a surprising statistic. A bold claim. A moment of genuine emotion. A counterintuitive statement. Move that moment to the very beginning of your reel, even if doing so means the video is no longer in chronological order. Chronological order is optional. Attention is not. Once you have someone watching, the context that follows makes sense — because they're invested.</div>
+  </div>
+
+  <div class="body-text">
+    This technique requires some judgment and some creativity. Not every clip lends itself to reordering cleanly. Sometimes you'll need to make a cut that feels slightly abrupt. That's usually fine — viewers are accustomed to jump cuts in short-form content and they adjust quickly. What they don't adjust to is a slow start. A slow start means they're gone.
+  </div>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-name">CapCut</div>
+      <div class="tool-desc">Primary editing tool. Import your downloaded source footage here, find your timestamps, make your cuts, and build the initial reel structure.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Instagram Edits App</div>
+      <div class="tool-desc">Final editing platform for all posts. Captions, music selection, final cuts, and direct posting all happen here. There is strong reason to believe Instagram algorithmically favors content posted natively through its own Edits app.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">4K Downloader</div>
+      <div class="tool-desc">Desktop application for downloading source video at original quality. Non-negotiable part of the stack. Web-based alternatives produce noticeably lower quality output.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">YouTube Transcript</div>
+      <div class="tool-desc">Built into YouTube. Expand the video description, click Show Transcript, then use Ctrl+F to search by keyword. The fastest way to locate an exact moment in a long-form video.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 05 — Quality & Hook Engineering</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-05b"></div>
+<!-- SECTION 05B: FULL PRODUCTION WORKFLOW -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="content-page">
+  <div class="section-num">05</div>
+  <div class="section-header">
+    <span class="page-label">Section Five — Continued</span>
+    <div class="section-title">The Full<br><span class="gold">Production</span><br>Workflow</div>
+    <div class="section-intro">From downloaded footage to scheduled post — every step of the actual production process, including the parts nobody else talks about.</div>
+  </div>
+
+  <div class="body-text">
+    Once you have your source footage downloaded at full quality, the production process follows a specific sequence. Understanding the whole chain — and where the time actually goes — will save you hours of frustration as you get started.
+  </div>
+
+  <div class="step-list">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content"><strong>Import to CapCut and make your cuts.</strong> This is where the most meaningful editing time is spent. If the clip is a clean, continuous segment from a podcast, this is fast. If you're pulling multiple moments from different parts of a long video and assembling them into a coherent reel, this is where you'll spend the bulk of your production time. There's no shortcut here — this is the craft.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content"><strong>Crop to 4:3 ratio.</strong> The original 16:9 YouTube aspect ratio does not translate well to mobile viewing. In CapCut, crop your clips down to a 4:3 format. When you have multiple clips in sequence, you don't need to re-crop each one individually — crop the first one to your liking, copy that formatting, and paste it across every subsequent clip. This alone saves significant time on multi-cut reels.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content"><strong>Handle camera angle cuts deliberately.</strong> When a podcast video cuts between two speakers — a left-facing camera angle and a right-facing camera angle — each angle needs its own crop to center the speaker properly. Make a cut in your timeline every time the camera angle changes. Crop the left-facing clips as a group and the right-facing clips as a group. This keeps your speakers visually centered throughout the reel and makes the viewing experience noticeably smoother.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content"><strong>Export from CapCut and AirDrop to your phone.</strong> Export at the highest available quality setting. AirDrop the file to your phone. This preserves the full resolution of your work — no compression, no quality loss. Never email it to yourself. Never upload it to a cloud service and re-download it. Any unnecessary transfer step introduces compression.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content"><strong>Run your dual ChatGPT thread system.</strong> This is where the caption and hook generation happens. Open your laptop, start a new message in your caption thread on ChatGPT, and play the reel audio out loud from your phone so the laptop microphone picks it up. Record the audio directly into the prompt — this gives ChatGPT the actual spoken content of your reel. Follow the audio with a brief written synopsis: who is speaking, what the video is about, what podcast or show it came from, and any relevant context about the speakers. Then run two separate threads simultaneously.</div>
+    </div>
+  </div>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-name">Thread One: Caption Generator</div>
+      <div class="tool-desc">Produces individual captions for every platform — Instagram, Threads, Twitter/X, TikTok, YouTube, LinkedIn — each formatted to that platform's style, tone, and character limits. Includes your handle on each one. Copy and paste directly at posting time.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Thread Two: Viral Hook Generator</div>
+      <div class="tool-desc">Takes the same content brief and brainstorms viral text hook options — the single line of text that appears overlaid on your video for its entire duration. You iterate back and forth with ChatGPT on this thread until you land on a hook that feels right.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 05 — Production Workflow</div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+<div class="content-page">
+  <div class="section-num">05</div>
+
+  <div class="section-title" style="font-size:36px; margin-bottom:20px;">The Canva <span class="gold">Export System</span></div>
+
+  <div class="body-text">
+    Once you have your viral hook finalized from ChatGPT, take that hook into Canva where you have a pre-built template set up. Update the text, export three assets with backgrounds removed: the hook caption overlay, a watermark with your page branding, and optionally a logo/title card for experimental trial reels. These three assets come out of Canva as clean PNG files with transparent backgrounds.
+  </div>
+
+  <div class="honest-box">
+    <div class="honest-label">Important: Never Use Canva for Video</div>
+    <div class="honest-text">Canva applies compression when you upload or download video files through it. This compression reduces the visual quality of your footage in a way that is visible and irreversible. Use Canva exclusively for static graphic assets — text overlays, watermarks, thumbnails. Never run your actual video through Canva at any point in the production process.</div>
+  </div>
+
+  <div class="step-list">
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-content"><strong>Import everything into the Instagram Edits app.</strong> Bring your video file into a new Edits project. Overlay your hook caption PNG and watermark PNG from Canva. This is also where you select your audio track and make any final timing adjustments. The Edits app is your finishing room — everything comes together here.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">7</div>
+      <div class="step-content"><strong>Generate captions — and prepare for frustration.</strong> The Instagram Edits app has a built-in auto-caption generator. Use it, but go in with realistic expectations. It is buggy. It frequently misses words, misattributes lines, and fails to caption portions of the video entirely. You will need to go through the captions line by line, fix errors, manually add text boxes where the generator failed, and adjust sizing and positioning throughout. This is the single most time-consuming and frustrating step in the entire production process. There is currently no perfect solution that doesn't involve either paying for external software or accepting a quality trade-off from compression.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">8</div>
+      <div class="step-content"><strong>Export and post or schedule.</strong> When captions are done, export the reel from Edits. It automatically creates a draft in Instagram. Go into the draft, paste your Instagram caption from your ChatGPT caption thread, review your settings, and either post it live immediately or schedule it for a future time. If you're batching for the week, schedule it for an early morning slot on your chosen weekday.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">9</div>
+      <div class="step-content"><strong>Cross-post to all other platforms.</strong> Go back to your ChatGPT caption thread and copy the platform-specific captions for each of your other accounts — Threads, Twitter/X, TikTok, YouTube Shorts, LinkedIn. Post or schedule on each platform. Update your content tracker spreadsheet to mark each platform as distributed. Done.</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">The Time Breakdown — Honest Numbers</div>
+    <div class="insight-text">Source finding and timestamp location (with the toolkit from Section 4): 5–15 minutes. CapCut editing and cropping: 15–45 minutes depending on complexity. ChatGPT caption and hook generation: 10–20 minutes. Canva asset export: 5 minutes. Instagram Edits final assembly: 10–15 minutes. Captions: 10–30 minutes depending on how cooperative the generator is. Cross-platform distribution: 10–15 minutes. Total range per post: approximately 60 to 140 minutes. The more you do it, the faster each step gets — but the captions will test your patience indefinitely.</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 05 — Production Workflow</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-06"></div>
+<!-- SECTION 06: THE FULL-TIME JOB ROUTINE -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="content-page">
+  <div class="section-num">06</div>
+  <div class="section-header">
+    <span class="page-label">Section Six</span>
+    <div class="section-title">The Full-Time<br><span class="gold">Job Routine</span></div>
+    <div class="section-intro">This is my actual daily and weekly schedule — not an idealized version of it. The one I run while holding down a full-time job, trying to go to the gym, feeding myself, and occasionally having a life.</div>
+  </div>
+
+  <div class="body-text">
+    The biggest obstacle most working creators face isn't skill — it's time. There genuinely isn't much of it when you factor in a full work day, commute, meals, sleep, and basic life maintenance. The system I've built is specifically designed around that constraint. It doesn't require large uninterrupted blocks of time. It requires consistency in small, focused windows.
+  </div>
+
+  <table class="routine-table">
+    <tr>
+      <th>Time</th>
+      <th>Activity</th>
+      <th>Time Cost</th>
+    </tr>
+    <tr>
+      <td><strong>Morning</strong><br><em>Before Work</em></td>
+      <td>Scheduled post goes live automatically — no action needed. Quick browse of Instagram search tab to save any strong content into organized collections. Not mandatory every morning.</td>
+      <td>0–15 min</td>
+    </tr>
+    <tr>
+      <td><strong>Workday</strong><br><em>9-to-5</em></td>
+      <td>Headphones in, podcast or long-form interview playing in the background. Note timestamps and keywords when something stands out. You are still doing your job. This costs you nothing extra.</td>
+      <td>0 extra min</td>
+    </tr>
+    <tr>
+      <td><strong>Evening</strong><br><em>After Work</em></td>
+      <td>Primary creation window. Source videos, edit in CapCut, finalize in Edits app, post or schedule. If energy is low, pull from the content tracker and finish a reel that's already been started.</td>
+      <td>30–90 min</td>
+    </tr>
+    <tr>
+      <td><strong>Weekend</strong><br><em>Batch Session</em></td>
+      <td>Create and schedule all five morning weekday posts for the upcoming week. Each goes live between 4–8AM automatically. This is your most important weekly habit — it makes the whole week hands-free in the mornings.</td>
+      <td>2–3 hours</td>
+    </tr>
+  </table>
+
+  <div class="body-text">
+    The goal on any given day is a minimum of two posts. One in the morning — which is handled by your batch scheduling — and at least one in the evening after work. On good days, you'll get three or four out. On hard days, two is enough. <strong>The minimum matters more than the maximum.</strong>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 06 — The Routine</div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+<div class="content-page">
+  <div class="section-num">06</div>
+
+  <div class="section-title" style="font-size:36px; margin-bottom:20px;">The Content <span class="gold">Tracker System</span></div>
+
+  <div class="body-text">
+    One of the most underrated tools in my workflow is a simple Google Sheets content tracker. Every video I source gets its own row. The columns track what stage of production that video is in — sourced, imported to CapCut, final edits done in the Edits app, and then a separate column for each platform it has been posted to.
+  </div>
+
+  <div class="body-text">
+    The practical value of this becomes obvious on the evenings when you get home from work exhausted, you've had a long day, and you need to post something but have zero energy to go find and source a new video from scratch. You open your tracker, filter for videos that are already at the final-edit stage, and you have a ready-made queue of content waiting for you. <strong>You go from zero to posted in under five minutes.</strong>
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">How to Build Your Tracker</div>
+    <div class="callout-text">Create a Google Sheet with these columns: Video Name / Sourced / CapCut Edit / Final Edits Done / Instagram / Threads / TikTok / YouTube Shorts / Twitter / LinkedIn. Use a simple checkmark or X for each column. Color-code by status if you want — green for fully distributed, yellow for partially done, red for sourced but not started. The exact format matters less than the habit of keeping it updated.</div>
+  </div>
+
+  <div class="section-title" style="font-size:36px; margin-top:36px; margin-bottom:20px;">Scheduled vs. <span class="gold">Live Posting</span></div>
+
+  <div class="body-text">
+    Here is an observation I've made that I want to be transparent about because I can't prove it definitively — but my experience is consistent enough that I believe it's worth sharing: <strong>posts that are scheduled in advance and posted automatically tend to perform slightly worse than posts that are imported and published live in the moment.</strong>
+  </div>
+
+  <div class="body-text">
+    My theory is that Instagram may give a small algorithmic boost to content that is posted natively and in real time versus content that was scheduled through a draft. I also believe the Edits app may receive preferential treatment over posts assembled through other means. Again — no hard data, but my content consistently performs better when I am actively posting it versus when it goes out on a timer.
+  </div>
+
+  <div class="honest-box">
+    <div class="honest-label">The Working Person's Compromise</div>
+    <div class="honest-text">Given all of that, I still schedule my morning weekday posts. I do it because the alternative — waking up before work and posting manually every single morning — is not sustainable for me long term. The slight performance dip from scheduling is worth the trade-off of keeping the habit alive without burning out. If you can post live more often, do it. But don't let the perfect be the enemy of the consistent.</div>
+  </div>
+
+  <div class="body-text">
+    One practical note on scheduling: I never schedule posts more than five days out. Beyond that, the content can start to feel stale or less timely. Keep your scheduled queue short and always be adding to it so you never feel like you're working far ahead of yourself.
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 06 — The Routine</div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<div id="section-07"></div>
+<!-- SECTION 07: WHAT HAPPENS WHEN IT WORKS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="page">
+<div class="content-page">
+  <div class="section-num">07</div>
+  <div class="section-header">
+    <span class="page-label">Section Seven</span>
+    <div class="section-title">What Happens<br>When It <span class="gold">Works</span></div>
+    <div class="section-intro">At some point, if you follow this system consistently, you will have an audience. Here's what to think about when that moment arrives.</div>
+  </div>
+
+  <div class="body-text">
+    The most important thing to understand about monetizing a page like this is that you cannot sell to an audience you don't trust yet. The people who follow Entrepreneur Sanctuary are there because they find value in the content. Before you ask them to spend money, you need to have spent real time delivering on that promise consistently.
+  </div>
+
+  <div class="body-text">
+    When you do feel ready to monetize, lead with something low-friction and immediately useful. A digital product priced between $5 and $30 that solves a specific problem your audience already has. A coaching offer where your page growth itself is the social proof. An affiliate partnership with a product you actually use and believe in. <strong>Never promote something you wouldn't personally recommend to a friend.</strong> Your audience will sense inauthenticity faster than you think, and the trust you've built is worth far more than any single commission.
+  </div>
+
+  <div class="callout">
+    <div class="callout-label">The Compounding Effect</div>
+    <div class="callout-text">The single most important thing I've learned is that consistency compounds in a way that is almost invisible until it suddenly isn't. For weeks, your daily effort may feel like it's producing nothing. And then something shifts — a post breaks through, the algorithm picks up your page, and the growth begins to accelerate on its own. You cannot manufacture that moment. You can only stay consistent long enough for it to arrive.</div>
+  </div>
+
+  <div class="body-text">
+    The creators who succeed with pages like this aren't necessarily the most talented editors or the best content curators. They are the ones who are still posting six months from now when most people who started the same week have already stopped. <strong>Consistency isn't a strategy. It's the entire game.</strong>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"Treat Instagram like a media company, not a hobby. Media companies publish every day. Hobbies happen when you feel like it."</div>
+    <div class="quote-attr">Entrepreneur Sanctuary</div>
+  </div>
+
+  <div class="body-text">
+    If you've read this far and you're serious about building your own page, I offer <a href="https://ig.me/m/entrepreneursanctuary" class="xref" target="_blank">1-on-1 coaching sessions</a> for creators who want a personalized strategy built around their specific niche, schedule, and goals. In 60 minutes we'll cover your content strategy, your posting routine, your sourcing system, and you'll leave with a clear 30-day plan.
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">Work With Me Directly</div>
+    <div class="insight-text">Coaching sessions are $150 for 60 minutes via Zoom. I've grown this page to 28K followers and 26 million views in 90 days while working full time — and I'll show you exactly how to build yours. <a href="https://ig.me/m/entrepreneursanctuary" target="_blank" class="xref">DM me on Instagram</a> to find out more about coaching.</div>
+  </div>
+
+  <div class="page-footer">
+    <div class="footer-brand">ENTREPRENEUR SANCTUARY</div>
+    <div class="footer-section">Section 07 — Monetization</div>
+  </div>
+</div>
+</div>
+
+<div id="back-cover"></div>
+<!-- BACK COVER -->
+<div class="page">
+<div class="cover" style="justify-content: center; align-items: center; text-align: center; gap: 40px;">
+  <div class="cover-glow"></div>
+  <div class="cover-glow2"></div>
+
+  <div>
+    <div class="cover-eyebrow" style="text-align:center; margin-bottom: 28px;">Thank You For Reading</div>
+    <div class="cover-title" style="font-size: 72px; text-align:center;">KEEP<br><span class="gold">BUILDING.</span></div>
+  </div>
+
+  <div style="max-width: 480px; text-align:center;">
+    <div class="body-text" style="text-align:center; color: #888; font-size:14px;">
+      If this guide helped you, the best thing you can do is start. Not tomorrow. Not when you feel ready. Today. Post something. Save something. Write down a timestamp. Take the first step and let the compounding do its work.
+    </div>
+  </div>
+
+  <div class="cover-stats" style="max-width: 560px; width:100%;">
+    <div class="cover-stat"><div class="cover-stat-num">28K</div><div class="cover-stat-label">Followers</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">26M</div><div class="cover-stat-label">Views</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">90</div><div class="cover-stat-label">Days</div></div>
+    <div class="cover-stat"><div class="cover-stat-num">1</div><div class="cover-stat-label">Person</div></div>
+  </div>
+
+  <div>
+    <div class="cover-brand" style="font-size: 22px; letter-spacing: 4px; margin-bottom: 8px;">ENTREPRENEUR SANCTUARY</div>
+    <div style="font-size: 11px; color: var(--gray); letter-spacing: 2px;">@entrepreneursanctuary</div>
+  </div>
+</div>
+</div>
+
+
+<!-- PERSISTENT FOOTER -->
+<div class="site-footer">
+  <a href="#top" class="footer-logo">ENTREPRENEUR SANCTUARY</a>
+  <div class="footer-platforms">
+    <a href="https://www.instagram.com/entrepreneursanctuary?igsh=MWF0ZjVkZnQwcWFudA%3D%3D&utm_source=qr" target="_blank" class="footer-platform-link">Instagram</a>
+    <a href="https://www.tiktok.com/@entrepreneursanctuary?_r=1&_t=ZP-94o1EsXXjwM" target="_blank" class="footer-platform-link">TikTok</a>
+    <a href="https://youtube.com/@entrepreneursanctuary?si=ILxCLKMM02T98AkP" target="_blank" class="footer-platform-link">YouTube</a>
+    <a href="https://www.threads.com/@entrepreneursanctuary?igshid=NTc4MTIwNjQ2YQ==" target="_blank" class="footer-platform-link">Threads</a>
+    <a href="https://x.com/prenursanctuary?s=21" target="_blank" class="footer-platform-link">Twitter / X</a>
+    <a href="https://www.linkedin.com/company/entrepreneursanctuary/" target="_blank" class="footer-platform-link">LinkedIn</a>
+  </div>
+  <a href="https://ig.me/m/entrepreneursanctuary" target="_blank" class="footer-cta">💬 Book 1-on-1 Coaching</a>
+</div>
+
+<!-- SLIM STICKY FOOTER -->
+<div class="sticky-footer" id="stickyFooter">
+  <a href="https://www.instagram.com/entrepreneursanctuary?igsh=MWF0ZjVkZnQwcWFudA%3D%3D&utm_source=qr" target="_blank" class="sticky-link instagram">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    @entrepreneursanctuary
+  </a>
+  <div class="sticky-divider"></div>
+  <a href="https://ig.me/m/entrepreneursanctuary" target="_blank" class="sticky-link coaching">
+    💬 Book Coaching
+  </a>
+  <div class="sticky-divider"></div>
+  <a href="#top" class="sticky-link top" id="stickyTop">
+    ↑ Top
+  </a>
+</div>
+
+<script>
+  // Show sticky footer after scrolling past cover
+  window.addEventListener('scroll', function() {
+    const footer = document.getElementById('stickyFooter');
+    if (window.scrollY > 600) {
+      footer.classList.add('visible');
+    } else {
+      footer.classList.remove('visible');
+    }
+  });
+
+  // Smooth scroll for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
